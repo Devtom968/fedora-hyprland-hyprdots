@@ -9,6 +9,7 @@ install_packages() {
 
 # Install required packages
 install_packages \
+    dnf-plugins-core \
     wl-clipboard \
     go \
     gtk3-devel \
@@ -16,7 +17,7 @@ install_packages \
     swappy \
     rust \
     cargo \
-    python-cairo \
+    python3-cairo \
     alsa-ucm \
     alsa-firmware \
     alsa-sof-firmware \
@@ -26,14 +27,13 @@ install_packages \
     bluez \
     bluez-tools \
     blueman \
-    python3-cairo \
     NetworkManager-wifi \
     iwl* \
     lm_sensors \
     cava \
     polkit-qt6-1 \
     lsd \
-    neofetch \
+    fastfetch \
     grimblast \
     pipx
 

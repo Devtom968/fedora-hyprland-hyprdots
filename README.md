@@ -1,4 +1,4 @@
-# 🚧 Fedora Hyprland Hyprdots (Unofficial Port)
+# 🚧 Fedora Hyprland Hyprdots (Unofficial Port) - Updated for Fedora 43
 
 > ⚠️ **This project is no longer maintained**
 
@@ -24,7 +24,7 @@ Hyprland dotfiles by **prasanthrangan**.
 
 ## 🖥️ Preview
 
-> Example setup running on Fedora
+> Example setup running on Fedora (Supports 39, 40, 41, 42, 43+)
 
 ![preview](https://user-images.githubusercontent.com/106020512/235429801-e8b8dae2-c1ad-4e23-9aa2-b1edb6cabe99.mp4)
 
@@ -73,7 +73,8 @@ error: externally-managed-environment
 Fix:
 
 ```bash
-sudo mv /usr/lib/python3.11/EXTERNALLY-MANAGED /usr/lib/python3.11/EXTERNALLY-MANAGED.old
+# General fix for Fedora 39+ (replace 3.xx with your python version)
+sudo mv /usr/lib/python3.*/EXTERNALLY-MANAGED /usr/lib/python3.*/EXTERNALLY-MANAGED.old 2>/dev/null || true
 ```
 
 ---

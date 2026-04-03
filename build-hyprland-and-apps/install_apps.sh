@@ -20,7 +20,7 @@ install_packages \
     wlogout \
     grim \
     slurp \
-    polkit-kde \
+    polkit-kde-agent-1 \
     xdg-desktop-portal-gtk \
     ImageMagick \
     pavucontrol \
@@ -36,5 +36,7 @@ install_packages \
     dolphin \
     sddm \
     firefox \
+    kitty \
+    neovim \
     kde-cli-tools \
     fastfetch

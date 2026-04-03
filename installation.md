@@ -7,15 +7,18 @@
 
 ## Process
 
-The install script has 3 main sections
-- [i]nstall
-    - prepare temp list of packages `install_pkg.lst` from main package list `custom_hypr.lst`
-    - if the user pass additional list `custom_apps.lst`, then add it to the list `install_pkg.lst`
-    - if nvidia card is detected in system, add `nvidia-dkms` and `nvidia-utils` to the list `install_pkg.lst`
-        - script also works for AMD and Intel system, it will just skip this nvidia packages.
-    - install packages from `install_pkg.lst`
-        - use `pacman` to install package if its available in official arch repo
-        - use `yay` to install package if its available in AUR
+The install script has been adapted for Fedora (Tested on 39, 40, 41, 42, 43+)
+The installation is automated via several shell scripts in `build-hyprland-and-apps/`.
+
+- [i]nstall dependencies
+    - Installs core system libraries and development tools using `dnf`
+    - Configures RPM Fusion repositories automatically for the current Fedora version
+    - Handles Google Chrome and VS Code repository setup
+
+- [i]nstall Hyprland stack
+    - Enables the `solopasha/hyprland` COPR repository
+    - Detects NVIDIA GPUs and installs necessary drivers (akmod-nvidia)
+    - Installs Hyprland, Waybar, Rofi-wayland, Dunst, etc.
 
 - [d]efault
     - exactly same as install, but with `--noconfirm` option
@@ -65,21 +68,12 @@ The install script can be executed in different modes,
 
 - for default full hyprland installation with all configs
 ```shell
-./install.sh
+./install_all.sh
 ```
 
-- for full or minimal hyprland installation + your favorite packages (ex. `custom_apps.lst`) 
-```shell
-./install.sh custom_apps.lst # full install custom_hypr.lst + custom_app.lst with configs
-./install.sh -i custom_apps.lst # minimal install custom_hypr.lst + custom_app.lst without configs
-```
+- for individual components, run the respective `install_*.sh` scripts inside `build-hyprland-and-apps/`.
 
-- each [section](#process) can also be independently executed as,
-```shell
-./install.sh -i # minimal install hyprland without any configs
-./install.sh -d # minimal install hyprland without any configs, but with (--noconfirm) install
-./install.sh -r # just restores the config files
-./install.sh -s # start and enable system services
-./install.sh -drs # same as ./install.sh, but with (--noconfirm) install
-```
-
+- Note for Fedora 43+:
+  - Use `dnf` or `dnf5` as both are compatible.
+  - Ensure you run the dependency script FIRST.
+  - Python-based sub-tools may require the `EXTERNALLY-MANAGED` fix as mentioned in the README.
